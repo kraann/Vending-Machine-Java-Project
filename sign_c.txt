@@ -1,0 +1,120 @@
+package Winay4021;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+import javax.swing.JLabel;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class Sign_inpage {
+
+	private JFrame frmVendingMachine;
+	private JTextField tfname;
+	private JTextField tfmobile;
+	private JTextField tfpassword;
+	private JLabel lblNewLabel;
+	private JLabel lblNewLabel_1;
+	private JLabel lblNewLabel_2;
+	private JLabel lblNewLabel_3;
+	private JTextField tfconfirm;
+	private JButton btnNewButton;
+	private JButton btnNewButton_1;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Sign_inpage window = new Sign_inpage();
+					window.frmVendingMachine.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public Sign_inpage() {
+		initialize();
+		frmVendingMachine.setVisible(true);
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frmVendingMachine = new JFrame();
+		frmVendingMachine.setTitle("VENDING MACHINE");
+		frmVendingMachine.setBounds(100, 100, 450, 300);
+		frmVendingMachine.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmVendingMachine.getContentPane().setLayout(null);
+		
+		tfname = new JTextField();
+		tfname.setBounds(234, 28, 96, 19);
+		frmVendingMachine.getContentPane().add(tfname);
+		tfname.setColumns(10);
+		
+		tfmobile = new JTextField();
+		tfmobile.setBounds(234, 65, 96, 19);
+		frmVendingMachine.getContentPane().add(tfmobile);
+		tfmobile.setColumns(10);
+		
+		tfpassword = new JTextField();
+		tfpassword.setBounds(234, 109, 96, 19);
+		frmVendingMachine.getContentPane().add(tfpassword);
+		tfpassword.setColumns(10);
+		
+		tfconfirm = new JTextField();
+		tfconfirm.setBounds(234, 149, 96, 19);
+		frmVendingMachine.getContentPane().add(tfconfirm);
+		tfconfirm.setColumns(10);
+		
+		lblNewLabel = new JLabel("NAME");
+		lblNewLabel.setBounds(40, 21, 84, 33);
+		frmVendingMachine.getContentPane().add(lblNewLabel);
+		
+		lblNewLabel_1 = new JLabel("MOBILE NO");
+		lblNewLabel_1.setBounds(40, 68, 79, 13);
+		frmVendingMachine.getContentPane().add(lblNewLabel_1);
+		
+		lblNewLabel_2 = new JLabel("PASSWORD");
+		lblNewLabel_2.setBounds(40, 112, 79, 13);
+		frmVendingMachine.getContentPane().add(lblNewLabel_2);
+		
+		lblNewLabel_3 = new JLabel("CONFORM PASS WORD ");
+		lblNewLabel_3.setBounds(40, 149, 129, 19);
+		frmVendingMachine.getContentPane().add(lblNewLabel_3);
+		
+		btnNewButton = new JButton("CANCEL");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				tfname.setText(null);
+				tfmobile.setText(null);
+				tfpassword.setText(null);
+				tfconfirm.setText(null);
+			}
+		});
+		btnNewButton.setBounds(234, 203, 85, 21);
+		frmVendingMachine.getContentPane().add(btnNewButton);
+		
+		btnNewButton_1 = new JButton("SIGN IN");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				login_page lp =new login_page();
+					frmVendingMachine.dispose();
+			}
+		});
+		btnNewButton_1.setBounds(39, 203, 85, 21);
+		frmVendingMachine.getContentPane().add(btnNewButton_1);
+	}
+
+}

@@ -1,0 +1,144 @@
+package Winay4021;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
+import java.awt.Font;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
+
+public class adding_items {
+
+    private JFrame frame;
+	private JTextField tfitem;
+	private JTextField tfprice;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					adding_items window = new adding_items();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public adding_items() {
+		initialize();
+		frame.setVisible(true);
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.getContentPane().setFont(new Font("Tahoma", Font.PLAIN, 12));
+		frame.setBounds(100, 100, 450, 300);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("ITEMS");
+		lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 12));
+		lblNewLabel.setBounds(218, 28, 88, 23);
+		frame.getContentPane().add(lblNewLabel);
+		
+		JLabel lblNewLabel_2 = new JLabel("ITEM");
+		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_2.setBounds(79, 77, 88, 16);
+		frame.getContentPane().add(lblNewLabel_2);
+		
+		
+		tfitem = new JTextField();
+		tfitem.setBounds(210, 74, 96, 19);
+		frame.getContentPane().add(tfitem);
+		tfitem.setColumns(10);
+		
+		JLabel lblNewLabel_1 = new JLabel("PRICE");
+		lblNewLabel_1.setFont(new Font("Times New Roman", Font.PLAIN, 12));
+		lblNewLabel_1.setBounds(107, 115, 75, 13);
+		frame.getContentPane().add(lblNewLabel_1);
+		
+		tfprice = new JTextField();
+		tfprice.setBounds(210, 112, 96, 19);
+		frame.getContentPane().add(tfprice);
+		tfprice.setColumns(10);
+		
+		JButton btnNewButton_1 = new JButton("REMOVE ALL ");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					Class.forName("com.mysql.cj.jdbc.Driver");
+					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vendingmachine", "root", "");
+					Statement stmt = con.createStatement();
+					String item = tfitem.getText();
+					String price = tfprice.getText();
+					String sql = "delete from item_details";
+					stmt.executeUpdate(sql);
+					JOptionPane.showMessageDialog(frame, "All items deleted successfully");
+				}
+				catch(Exception exc) {exc.printStackTrace();}
+			}
+		});
+		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnNewButton_1.setBounds(107, 184, 132, 21);
+		frame.getContentPane().add(btnNewButton_1);
+		
+		JButton btnNewButton_2 = new JButton("ADD");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					Class.forName("com.mysql.cj.jdbc.Driver");
+					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vendingmachine", "root", "");
+					Statement stmt = con.createStatement();
+					String item = tfitem.getText();
+					String price = tfprice.getText();
+					String sql = "insert into item_details values('"+item+"', '"+price+"')";
+					stmt.executeUpdate(sql);
+					JOptionPane.showMessageDialog(frame, "Item added Successfully");
+				}
+				catch(Exception exc) {exc.printStackTrace();}
+			}
+		});
+		btnNewButton_2.setBounds(107, 152, 85, 21);
+		frame.getContentPane().add(btnNewButton_2);
+		
+		JButton btnNewButton = new JButton("CANCEL");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				tfitem.setText(null);
+				tfprice.setText(null);
+			}
+		});
+		btnNewButton.setBounds(221, 152, 85, 21);
+		frame.getContentPane().add(btnNewButton);
+		
+		JButton btnNewButton_3 = new JButton("VIEW ALL");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Retrieve_items re=new Retrieve_items();
+			    frame.dispose();
+			}
+		});
+		btnNewButton_3.setBounds(249, 183, 85, 21);
+		frame.getContentPane().add(btnNewButton_3);
+	}
+}

@@ -1,0 +1,147 @@
+package Winay4021;
+
+import java.awt.EventQueue;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+import javax.swing.JFrame;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
+import com.mysql.cj.jdbc.result.ResultSetMetaData;
+
+import java.awt.BorderLayout;
+import javax.swing.JScrollPane;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import java.awt.Font;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class pricing {
+
+	private JFrame frame;
+	private JTable table;
+	private JTable tbldata;
+	private JLabel lblNewLabel;
+	private JButton btnNewButton;
+	private JButton btnNewButton_1;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					pricing window = new pricing();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public pricing() {
+		initialize();
+		frame.setVisible(true);
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 783, 552);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		table = new JTable();
+		table.setBounds(0, 0, 769, 0);
+		frame.getContentPane().add(table);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(40, 72, 663, 124);
+		frame.getContentPane().add(scrollPane);
+		
+		tbldata = new JTable();
+		scrollPane.setViewportView(tbldata);
+		
+		lblNewLabel = new JLabel("");
+		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 12));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(52, 238, 645, 55);
+		frame.getContentPane().add(lblNewLabel);
+		
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vendingmachine", "root", "");
+			Statement stmt = con.createStatement();
+			String qry = "select * from items_added ";
+			ResultSet rs = stmt.executeQuery(qry);
+			ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
+			DefaultTableModel model=(DefaultTableModel)tbldata.getModel();
+			
+			int cols=rsmd.getColumnCount();
+			String[] colname=new String[cols];
+			for(int i=0;i<cols;i++)
+				colname[i]=rsmd.getColumnName(i+1);
+			model.setColumnIdentifiers(colname);
+			while (rs.next()) {
+                String item = rs.getString(1);
+                String price = rs.getString(2);
+                String[] row= {item,price};
+                model.addRow(row);
+			}
+			stmt.close();
+			con.close();
+		}
+		catch(Exception ex) {ex.printStackTrace(); }
+		
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vendingmachine", "root", "");
+			Statement stmt = con.createStatement();
+			String qry = "select price from items_added ";
+			ResultSet rs = stmt.executeQuery(qry);
+			int price_s=0,price;
+			while (rs.next()) {
+                 price = rs.getInt(1);
+                 price_s=price_s+price;
+			}
+			lblNewLabel.setText("your total amount is : " + price_s);
+			
+			btnNewButton = new JButton("OK");
+			btnNewButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					Retrieve_items re=new Retrieve_items();
+					frame.dispose();
+				}
+			});
+			btnNewButton.setBounds(454, 451, 85, 21);
+			frame.getContentPane().add(btnNewButton);
+			
+			btnNewButton_1 = new JButton("CANCEL");
+			btnNewButton_1.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					Retrieve_items re=new Retrieve_items();
+					frame.dispose();
+				}
+			});
+			btnNewButton_1.setBounds(612, 451, 85, 21);
+			frame.getContentPane().add(btnNewButton_1);
+			stmt.close();
+			con.close();
+		}
+		catch(Exception ex) {ex.printStackTrace(); }
+		
+	}
+
+}

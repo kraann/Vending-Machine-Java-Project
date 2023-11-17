@@ -1,0 +1,461 @@
+package Winay4021;
+
+import java.awt.EventQueue;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
+import com.mysql.cj.jdbc.result.ResultSetMetaData;
+
+import javax.swing.JScrollPane;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class Retrieve_items {
+
+	private JFrame frame;
+	private JTable tbldata;
+	private JButton btnNewButton;
+	private JButton btnNewButton_1;
+	private JButton btnNewButton_2;
+	private JButton btnNewButton_3;
+	private JButton btnNewButton_4;
+	private JButton btnNewButton_5;
+	private JButton btnNewButton_6;
+	private JButton btnNewButton_7;
+	private JButton btnNewButton_8;
+	private JButton btnNewButton_9;
+	private JButton btnNewButton_10;
+	private JButton btnNewButton_11;
+	private JButton btnNewButton_12;
+	private JButton btnNewButton_13;
+	private JButton btnNewButton_14;
+	private JButton btnNewButton_15;
+	private JButton btnNewButton_16;
+	private JButton btnNewButton_17;
+	private JButton btnNewButton_18;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Retrieve_items window = new Retrieve_items();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public Retrieve_items() {
+		initialize();
+		frame.setVisible(true);
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 756, 582);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 49, 722, 102);
+		frame.getContentPane().add(scrollPane);
+		
+		tbldata = new JTable();
+		scrollPane.setViewportView(tbldata);
+		
+		btnNewButton = new JButton("cake-100");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					Class.forName("com.mysql.cj.jdbc.Driver");
+					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vendingmachine", "root", "");
+					Statement stmt = con.createStatement();
+					String item = "cake";
+					int price = 100;
+					String sql = "insert into items_added values('"+item+"', '"+price+"')";
+					stmt.executeUpdate(sql);
+					JOptionPane.showMessageDialog(frame, "Item added Successfully");
+				}
+				catch(Exception exc) {exc.printStackTrace();}
+			}
+		});
+		btnNewButton.setBounds(28, 215, 85, 21);
+		frame.getContentPane().add(btnNewButton);
+		
+		btnNewButton_1 = new JButton("kurkure-30");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					Class.forName("com.mysql.cj.jdbc.Driver");
+					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vendingmachine", "root", "");
+					Statement stmt = con.createStatement();
+					String item = "kurkure";
+					int price = 30;
+					String sql = "insert into items_added values('"+item+"', '"+price+"')";
+					stmt.executeUpdate(sql);
+					JOptionPane.showMessageDialog(frame, "Item added Successfully");
+				}
+				catch(Exception exc) {exc.printStackTrace();}
+			}
+		});
+		btnNewButton_1.setBounds(232, 215, 85, 21);
+		frame.getContentPane().add(btnNewButton_1);
+		
+		btnNewButton_2 = new JButton("NEXT");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		btnNewButton_2.setBounds(619, 496, 85, 21);
+		frame.getContentPane().add(btnNewButton_2);
+		
+		btnNewButton_3 = new JButton("DAIRY MILK-50");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					Class.forName("com.mysql.cj.jdbc.Driver");
+					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vendingmachine", "root", "");
+					Statement stmt = con.createStatement();
+					String item = "DAIRY MILK";
+					int price = 50;
+					String sql = "insert into items_added values('"+item+"', '"+price+"')";
+					stmt.executeUpdate(sql);
+					JOptionPane.showMessageDialog(frame, "Item added Successfully");
+				}
+				catch(Exception exc) {exc.printStackTrace();}
+			}
+		});
+		btnNewButton_3.setBounds(394, 496, 108, 21);
+		frame.getContentPane().add(btnNewButton_3);
+		
+		btnNewButton_4 = new JButton("KIT KAT-55");
+		btnNewButton_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					Class.forName("com.mysql.cj.jdbc.Driver");
+					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vendingmachine", "root", "");
+					Statement stmt = con.createStatement();
+					String item = "kIT KAT";
+					int price = 55;
+					String sql = "insert into items_added values('"+item+"', '"+price+"')";
+					stmt.executeUpdate(sql);
+					JOptionPane.showMessageDialog(frame, "Item added Successfully");
+				}
+				catch(Exception exc) {exc.printStackTrace();}
+			}
+		});
+		btnNewButton_4.setBounds(232, 275, 85, 21);
+		frame.getContentPane().add(btnNewButton_4);
+		
+		btnNewButton_5 = new JButton("SPRITE-20");
+		btnNewButton_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					Class.forName("com.mysql.cj.jdbc.Driver");
+					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vendingmachine", "root", "");
+					Statement stmt = con.createStatement();
+					String item = "SPRITE";
+					int price = 20;
+					String sql = "insert into items_added values('"+item+"', '"+price+"')";
+					stmt.executeUpdate(sql);
+					JOptionPane.showMessageDialog(frame, "Item added Successfully");
+				}
+				catch(Exception exc) {exc.printStackTrace();}
+			}
+		});
+		btnNewButton_5.setBounds(28, 334, 85, 21);
+		frame.getContentPane().add(btnNewButton_5);
+		
+		btnNewButton_6 = new JButton("MILK-60");
+		btnNewButton_6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					Class.forName("com.mysql.cj.jdbc.Driver");
+					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vendingmachine", "root", "");
+					Statement stmt = con.createStatement();
+					String item = "MILK";
+					int price = 60;
+					String sql = "insert into items_added values('"+item+"', '"+price+"')";
+					stmt.executeUpdate(sql);
+					JOptionPane.showMessageDialog(frame, "Item added Successfully");
+				}
+				catch(Exception exc) {exc.printStackTrace();}
+			}
+		});
+		btnNewButton_6.setBounds(232, 334, 85, 21);
+		frame.getContentPane().add(btnNewButton_6);
+		
+		btnNewButton_7 = new JButton("COOL CAKE-55");
+		btnNewButton_7.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					Class.forName("com.mysql.cj.jdbc.Driver");
+					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vendingmachine", "root", "");
+					Statement stmt = con.createStatement();
+					String item = "COOL CAKE";
+					int price = 55;
+					String sql = "insert into items_added values('"+item+"', '"+price+"')";
+					stmt.executeUpdate(sql);
+					JOptionPane.showMessageDialog(frame, "Item added Successfully");
+				}
+				catch(Exception exc) {exc.printStackTrace();}
+			}
+		});
+		btnNewButton_7.setBounds(394, 388, 108, 21);
+		frame.getContentPane().add(btnNewButton_7);
+		
+		btnNewButton_8 = new JButton("BOOST-50");
+		btnNewButton_8.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					Class.forName("com.mysql.cj.jdbc.Driver");
+					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vendingmachine", "root", "");
+					Statement stmt = con.createStatement();
+					String item = "BOOST";
+					int price = 50;
+					String sql = "insert into items_added values('"+item+"', '"+price+"')";
+					stmt.executeUpdate(sql);
+					JOptionPane.showMessageDialog(frame, "Item added Successfully");
+				}
+				catch(Exception exc) {exc.printStackTrace();}
+			}
+		});
+		btnNewButton_8.setBounds(232, 388, 85, 21);
+		frame.getContentPane().add(btnNewButton_8);
+		
+		btnNewButton_9 = new JButton("PEPSI-40");
+		btnNewButton_9.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					Class.forName("com.mysql.cj.jdbc.Driver");
+					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vendingmachine", "root", "");
+					Statement stmt = con.createStatement();
+					String item = "PEPSI";
+					int price = 40;
+					String sql = "insert into items_added values('"+item+"', '"+price+"')";
+					stmt.executeUpdate(sql);
+					JOptionPane.showMessageDialog(frame, "Item added Successfully");
+				}
+				catch(Exception exc) {exc.printStackTrace();}
+			}
+		});
+		btnNewButton_9.setBounds(28, 444, 85, 21);
+		frame.getContentPane().add(btnNewButton_9);
+		
+		btnNewButton_10 = new JButton("PEPSI-50");
+		btnNewButton_10.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					Class.forName("com.mysql.cj.jdbc.Driver");
+					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vendingmachine", "root", "");
+					Statement stmt = con.createStatement();
+					String item = "PEPSI";
+					int price = 50;
+					String sql = "insert into items_added values('"+item+"', '"+price+"')";
+					stmt.executeUpdate(sql);
+					JOptionPane.showMessageDialog(frame, "Item added Successfully");
+				}
+				catch(Exception exc) {exc.printStackTrace();}
+			}
+		});
+		btnNewButton_10.setBounds(232, 444, 85, 21);
+		frame.getContentPane().add(btnNewButton_10);
+		
+		btnNewButton_11 = new JButton("FANTA-30");
+		btnNewButton_11.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			try {
+				Class.forName("com.mysql.cj.jdbc.Driver");
+				Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vendingmachine", "root", "");
+				Statement stmt = con.createStatement();
+				String item = "FANTA";
+				int price = 30;
+				String sql = "insert into items_added values('"+item+"', '"+price+"')";
+				stmt.executeUpdate(sql);
+				JOptionPane.showMessageDialog(frame, "Item added Successfully");
+			}
+			catch(Exception exc) {exc.printStackTrace();}
+			}
+		});
+		btnNewButton_11.setBounds(28, 496, 85, 21);
+		frame.getContentPane().add(btnNewButton_11);
+		
+		btnNewButton_12 = new JButton("FIZZ-30");
+		btnNewButton_12.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					Class.forName("com.mysql.cj.jdbc.Driver");
+					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vendingmachine", "root", "");
+					Statement stmt = con.createStatement();
+					String item = "FIZZ";
+					int price = 30;
+					String sql = "insert into items_added values('"+item+"', '"+price+"')";
+					stmt.executeUpdate(sql);
+					JOptionPane.showMessageDialog(frame, "Item added Successfully");
+				}
+				catch(Exception exc) {exc.printStackTrace();}
+			}
+		});
+		btnNewButton_12.setBounds(232, 496, 85, 21);
+		frame.getContentPane().add(btnNewButton_12);
+		
+		btnNewButton_13 = new JButton("MAZA-40");
+		btnNewButton_13.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					Class.forName("com.mysql.cj.jdbc.Driver");
+					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vendingmachine", "root", "");
+					Statement stmt = con.createStatement();
+					String item = "MAZA";
+					int price = 40;
+					String sql = "insert into items_added values('"+item+"', '"+price+"')";
+					stmt.executeUpdate(sql);
+					JOptionPane.showMessageDialog(frame, "Item added Successfully");
+				}
+				catch(Exception exc) {exc.printStackTrace();}
+			}
+		});
+		btnNewButton_13.setBounds(28, 275, 85, 21);
+		frame.getContentPane().add(btnNewButton_13);
+		
+		btnNewButton_14 = new JButton("5 STAR-5");
+		btnNewButton_14.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					Class.forName("com.mysql.cj.jdbc.Driver");
+					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vendingmachine", "root", "");
+					Statement stmt = con.createStatement();
+					String item = "5 STAR";
+					int price = 5;
+					String sql = "insert into items_added values('"+item+"', '"+price+"')";
+					stmt.executeUpdate(sql);
+					JOptionPane.showMessageDialog(frame, "Item added Successfully");
+				}
+				catch(Exception exc) {exc.printStackTrace();}
+			}
+		});
+		btnNewButton_14.setBounds(28, 388, 85, 21);
+		frame.getContentPane().add(btnNewButton_14);
+		
+		btnNewButton_15 = new JButton("CADBURY-30");
+		btnNewButton_15.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					Class.forName("com.mysql.cj.jdbc.Driver");
+					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vendingmachine", "root", "");
+					Statement stmt = con.createStatement();
+					String item = "CADBURY";
+					int price = 30;
+					String sql = "insert into items_added values('"+item+"', '"+price+"')";
+					stmt.executeUpdate(sql);
+					JOptionPane.showMessageDialog(frame, "Item added Successfully");
+				}
+				catch(Exception exc) {exc.printStackTrace();}
+			}
+		});
+		btnNewButton_15.setBounds(394, 444, 108, 21);
+		frame.getContentPane().add(btnNewButton_15);
+		
+		btnNewButton_16 = new JButton("LAYS-10");
+		btnNewButton_16.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					Class.forName("com.mysql.cj.jdbc.Driver");
+					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vendingmachine", "root", "");
+					Statement stmt = con.createStatement();
+					String item = "LAYS";
+					int price = 10;
+					String sql = "insert into items_added values('"+item+"', '"+price+"')";
+					stmt.executeUpdate(sql);
+					JOptionPane.showMessageDialog(frame, "Item added Successfully");
+				}
+				catch(Exception exc) {exc.printStackTrace();}
+			}
+		});
+		btnNewButton_16.setBounds(394, 215, 85, 21);
+		frame.getContentPane().add(btnNewButton_16);
+		
+		btnNewButton_17 = new JButton("CHIPS-10");
+		btnNewButton_17.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					Class.forName("com.mysql.cj.jdbc.Driver");
+					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vendingmachine", "root", "");
+					Statement stmt = con.createStatement();
+					String item = "CHIPS";
+					int price = 10;
+					String sql = "insert into items_added values('"+item+"', '"+price+"')";
+					stmt.executeUpdate(sql);
+					JOptionPane.showMessageDialog(frame, "Item added Successfully");
+				}
+				catch(Exception exc) {exc.printStackTrace();}
+			}
+		});
+		btnNewButton_17.setBounds(394, 275, 85, 21);
+		frame.getContentPane().add(btnNewButton_17);
+		
+		btnNewButton_18 = new JButton("BINGO-10");
+		btnNewButton_18.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					Class.forName("com.mysql.cj.jdbc.Driver");
+					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vendingmachine", "root", "");
+					Statement stmt = con.createStatement();
+					String item = "BINGO";
+					int price = 10;
+					String sql = "insert into items_added values('"+item+"', '"+price+"')";
+					stmt.executeUpdate(sql);
+					JOptionPane.showMessageDialog(frame, "Item added Successfully");
+				}
+				catch(Exception exc) {exc.printStackTrace();}
+			}
+		});
+		btnNewButton_18.setBounds(394, 334, 85, 21);
+		frame.getContentPane().add(btnNewButton_18);
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vendingmachine", "root", "");
+			Statement stmt = con.createStatement();
+			String qry = "select * from item_details ";
+			ResultSet rs = stmt.executeQuery(qry);
+			ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
+			DefaultTableModel model=(DefaultTableModel)tbldata.getModel();
+			
+			int cols=rsmd.getColumnCount();
+			String[] colname=new String[cols];
+			for(int i=0;i<cols;i++)
+				colname[i]=rsmd.getColumnName(i+1);
+			model.setColumnIdentifiers(colname);
+			while (rs.next()) {
+                String item = rs.getString(1);
+                String price = rs.getString(2);
+                String[] row= {item,price};
+                model.addRow(row);
+			}
+			stmt.close();
+			con.close();
+		}
+		catch(Exception ex) {ex.printStackTrace(); }
+		
+	}
+}
